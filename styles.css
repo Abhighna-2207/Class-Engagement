@@ -29,7 +29,8 @@ h1 {
 label {
     font-weight: normal;
     color: #009688; /* Teal color for labels */
-    font-size: 14px; /* Smaller font size for labels */
+    font-size: 16px; /* Smaller font size for labels */
+    font-weight:bold;
 }
 
 /* Text inputs */
