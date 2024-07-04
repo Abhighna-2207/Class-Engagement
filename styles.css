@@ -1,0 +1,166 @@
+/* General body and container styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* White background */
+    margin: 0;
+    padding: 20px;
+    color: #333333; /* Dark gray text for better readability */
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background-color: #ffffff; /* White background */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    border-color: black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #009688; /* Teal color for heading */
+    font-size: 32px; /* Larger font size */
+    font-weight: bold;
+}
+
+/* Labels */
+label {
+    font-weight: normal;
+    color: #009688; /* Teal color for labels */
+    font-size: 14px; /* Smaller font size for labels */
+}
+
+/* Text inputs */
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 12px; /* Increased padding */
+    margin: 5px 0 20px 0;
+    box-sizing: border-box;
+    border: 1px solid #009688; /* Teal border */
+    border-radius: 6px; /* Slightly more rounded corners */
+    background-color: #f0f0f0; /* Light gray background */
+    font-size: 16px; /* Larger font size */
+}
+
+/* Buttons */
+button {
+    background-color: #009688; /* Teal background */
+    color: white;
+    padding: 12px 20px; /* Larger padding */
+    border: none;
+    border-radius: 6px; /* Slightly more rounded corners */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #00796b; /* Darker teal on hover */
+}
+
+/* Result container */
+.result {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 6px;
+    background-color: #ffffff; /* White background */
+    border: 1px solid #009688; /* Teal border */
+    color: #333333; /* Dark gray text for readability */
+}
+
+/* Print statement styles */
+.print-statement {
+    margin-top: 20px; /* Spacing above the print statements */
+    border: 2px solid #009688; /* Teal border */
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f0f0f0; /* Light gray background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add some shadow for a subtle 3D effect */
+}
+
+.print-statement p {
+    margin: 0;
+    color: #333333; /* Dark gray color for text */
+}
+
+.print-statement p:first-child {
+    font-weight: bold; /* Bold text for first paragraph */
+    color: #009688; /* Teal color for first paragraph */
+    font-size: 18px; /* Larger font size */
+}
+
+/* Datepicker icon */
+.datepicker-icon {
+    position: relative;
+}
+
+.datepicker-icon i {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%); /* Center the icon vertically */
+    cursor: pointer;
+    background-color: #009688; /* Teal background */
+    border: 1px solid #00796b; /* Darker teal border */
+    border-radius: 50%; /* Make the icon rounded */
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add some shadow for a subtle 3D effect */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Box container for attended and conducted inputs */
+.box-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Styling for attended and conducted boxes */
+.box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Add some margin between rows */
+}
+
+.box input {
+    flex: 1; /* Take up remaining space */
+    height: 100%;
+    margin: 0 5px;
+    border: 1px solid #009688; /* Teal border */
+    border-radius: 6px; /* Slightly more rounded corners */
+    font-size: 16px;
+    background-color: #f0f0f0; /* Light gray background */
+}
+
+/* Styling for days-input-container */
+.days-input-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.day-input {
+    flex-basis: calc(50% - 10px); /* Two inputs per row */
+    display: flex;
+    align-items: center;
+}
+
+.day-input label {
+    width: 100px; /* Fixed width for labels */
+    margin-right: 10px;
+    font-weight: normal; /* Ensure labels are not bold */
+    color: #009688; /* Teal color for labels */
+}
+
+.day-input input {
+    flex: 1; /* Take up remaining space */
+    padding: 12px; /* Increased padding */
+    margin: 0;
+    box-sizing: border-box;
+    border: 1px solid #009688; /* Teal border */
+    border-radius: 6px; /* Slightly more rounded corners */
+    font-size: 16px;
+    background-color: #f0f0f0; /* Light gray background */
+}
