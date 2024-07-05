@@ -1,10 +1,11 @@
 $(document).ready(function() {
     // Initialize datepicker for elements with class 'datepicker'
     $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd',
+        format: 'yy-mm-dd',
         autoclose: true,
         todayHighlight: true,
     });
+
 
     // Event listener for Enter key press in the numSubjects input field
     $('#numSubjects').keypress(function(event) {
@@ -51,9 +52,9 @@ $(document).ready(function() {
     $('#calculateButton').on('click', function() {
         calculateAttendance();
     });
+
+
 });
-
-
 // Function to create input boxes dynamically based on number of subjects
 const createInputBoxes = () => {
     let numSubjects = parseInt(document.getElementById('numSubjects').value);
