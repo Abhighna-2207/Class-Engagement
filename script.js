@@ -1,16 +1,20 @@
-
 $(document).ready(function() {
     // Initialize datepicker for elements with class 'datepicker'
     $('.datepicker').datepicker({
         format: 'yyyy-mm-dd',
         autoclose: true,
-        todayHighlight: true
+        todayHighlight: true,
     });
 
-    
-        // Add event listeners to handle Enter key press in number of subjects section
+    // Event listener for Enter key press in the numSubjects input field
+    $('#numSubjects').keypress(function(event) {
+        if (event.which === 13) { // Check if Enter key is pressed
+            event.preventDefault(); // Prevent default form submission
+            createInputBoxes(); // Call function to create input boxes
+        }
+    });
 
-    // Event listener for handling Enter key press
+    // Event listener for handling Enter key press to navigate through inputs
     $('#attendanceForm').on('keypress', 'input', function(e) {
         if (e.which === 13) { // Check if Enter key is pressed
             e.preventDefault();
@@ -37,8 +41,17 @@ $(document).ready(function() {
             }
         }
     });
-});
 
+    // Event listener for Create Boxes button click
+    $('#createInputBoxes').on('click', function() {
+        createInputBoxes();
+    });
+
+    // Event listener for Calculate button click
+    $('#calculateButton').on('click', function() {
+        calculateAttendance();
+    });
+});
 
 
 // Function to create input boxes dynamically based on number of subjects
