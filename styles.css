@@ -42,24 +42,24 @@ input[type="text"], input[type="number"] {
     border: 1px solid #009688; /* Teal border */
     border-radius: 6px; /* Slightly more rounded corners */
     background-color: #f0f0f0; /* Light gray background */
-    font-size: 16px; /* Larger font size */
+    font-size: 14px; /* Larger font size */
 }
 
-/* Buttons */
 button {
     background-color: #009688; /* Teal background */
     color: white;
-    padding: 12px 20px; /* Larger padding */
+    padding: 8px 16px; /* Decrease padding */
     border: none;
-    border-radius: 6px; /* Slightly more rounded corners */
+    border-radius: 5px; /* Keep the same border width */
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px; /* Decrease font size */
     transition: background-color 0.3s; /* Smooth transition */
 }
 
 button:hover {
     background-color: #00796b; /* Darker teal on hover */
 }
+
 
 /* Result container */
 .result {
@@ -93,23 +93,65 @@ button:hover {
 }
 
 /* Datepicker icon */
-.datepicker-icon {
-    position: relative;
-}
+/* Specific styles for datepicker */
+        /* Specific styles for datepicker */
+        .datepicker {
+            background-color: #ffffff; /* White background */
+            border: 1px solid #08574f; /* Teal border */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+            color: #333333; /* Dark gray text for better readability */
+            padding: 10px; /* Adjust padding as needed */
+            border-radius: 6px; /* Rounded corners */
+        }
+        
+        /* Highlight today’s date */
+        .datepicker .ui-datepicker-today a {
+            background-color: #009688; /* Teal background */
+            color: #ffffff; /* White text */
+            border-radius: 50%; /* Rounded corners for the highlighted day */
+        }
+        
+        /* Hover effect for days */
+        .datepicker .ui-datepicker-calendar .ui-state-hover a {
+            background-color: #7e7ac8; /* Darker teal on hover */
+            color: #ffffff; /* White text */
+            border-radius: 50%; /* Rounded corners for the hovered day */
+        }
+        
+        /* Style for selected date */
+        .datepicker .ui-datepicker-calendar .ui-state-active a {
+            background-color: #009688; /* Teal background */
+            color: #ffffff; /* White text */
+            border-radius: 50%; /* Rounded corners for the active day */
+        }
+        
+        /* Input with datepicker */
+        input.datepicker-input {
+            background-color: #f0f0f0; /* Light gray background */
+            border: 1px solid #009688; /* Teal border */
+            border-radius: 6px; /* Slightly more rounded corners */
+            font-size: 16px; /* Larger font size */
+            padding: 12px; /* Increased padding */
+            width: calc(100% - 34px); /* Adjust width for the icon */
+            box-sizing: border-box;
+        }
+        
+        /* Datepicker icon */
+        .datepicker-icon {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .datepicker-icon i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #009688; /* Teal color for icon */
+        }
 
-.datepicker-icon i {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%); /* Center the icon vertically */
-    cursor: pointer;
-    background-color: #009688; /* Teal background */
-    border: 1px solid #00796b; /* Darker teal border */
-    border-radius: 50%; /* Make the icon rounded */
-    padding: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add some shadow for a subtle 3D effect */
-    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effect */
-}
 
 /* Box container for attended and conducted inputs */
 .box-container {
