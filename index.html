@@ -9,7 +9,7 @@
     <!-- Link to jQuery and jQuery UI JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -33,70 +33,79 @@
             <div class="form-group">
                 <label for="numSubjects">Enter number of subjects (up to 15):</label>
                 <input type="number" id="numSubjects" name="numSubjects" max="15" min="1" required>
-                <button type="button" id="createInputBoxes">Enter Attendance</button>
+                <button type="button"  id="createInputBoxes">Enter Attendance</button>
+                <br>
             </div>
             <div class="box-container" id="boxContainer">
                 <!-- Input boxes dynamically created here -->
             </div>
             <br>
+            <br>
             <div class="form-group">
                 <label>No. of Classes conducted per Day :</label>
+                <br>
+                <br>
                 <div class="form-row days-input-container">
                     <div class="form-group col day-input">
                         <label for="mondayClasses">Monday :</label>
-                        <input type="number" class="form-control square-input" id="mondayClasses" placeholder="Classes" min="0" required>
+                        <input type="number" class="form-control square-input" id="mondayClasses" placeholder="Classes" min="0" max="10" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="tuesdayClasses">Tuesday</label>
-                        <input type="number" class="form-control square-input" id="tuesdayClasses" placeholder="Classes" min="0" required>
+                        <input type="number" class="form-control square-input" id="tuesdayClasses" placeholder="Classes" min="0" max="10" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="wednesdayClasses">Wednesday</label>
-                        <input type="number" class="form-control square-input" id="wednesdayClasses" placeholder="Classes" min="0" required>
+                        <input type="number" class="form-control square-input" id="wednesdayClasses" placeholder="Classes" min="0" max="10" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="thursdayClasses">Thursday</label>
-                        <input type="number" class="form-control square-input" id="thursdayClasses" placeholder="Classes" min="0" required>
+                        <input type="number" class="form-control square-input" id="thursdayClasses" placeholder="Classes" min="0" max="10" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="fridayClasses">Friday</label>
-                        <input type="number" class="form-control square-input" id="fridayClasses" placeholder="Classes" min="0" required>
+                        <input type="number" class="form-control square-input" id="fridayClasses" placeholder="Classes" min="0" max="10" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="saturdayClasses">Saturday</label>
-                        <input type="number" class="form-control square-input" id="saturdayClasses" placeholder="Classes" min="0" required>
+                        <input type="number" class="form-control square-input" id="saturdayClasses" placeholder="Classes" min="0" max="10" required>
                     </div>
                 </div>
             </div>
+            <br>
+            <br>
             <div class="form-group">
                 <label>No. of public holidays occurring between tomorrow and the end of the semester on :</label>
+                <br>
                 <div class="form-row days-input-container">
                     <div class="form-group col day-input">
                         <label for="mondayHolidays">Monday</label>
-                        <input type="number" class="form-control square-input" id="mondayHolidays" placeholder="Holidays" required>
+                        <input type="number" class="form-control square-input" id="mondayHolidays" placeholder="Holidays" max="30" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="tuesdayHolidays">Tuesday</label>
-                        <input type="number" class="form-control square-input" id="tuesdayHolidays" placeholder="Holidays" required>
+                        <input type="number" class="form-control square-input" id="tuesdayHolidays" placeholder="Holidays" max="30" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="wednesdayHolidays">Wednesday</label>
-                        <input type="number" class="form-control square-input" id="wednesdayHolidays" placeholder="Holidays" required>
+                        <input type="number" class="form-control square-input" id="wednesdayHolidays" placeholder="Holidays" max="30" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="thursdayHolidays">Thursday</label>
-                        <input type="number" class="form-control square-input" id="thursdayHolidays" placeholder="Holidays" required>
+                        <input type="number" class="form-control square-input" id="thursdayHolidays" placeholder="Holidays" max="30" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="fridayHolidays">Friday</label>
-                        <input type="number" class="form-control square-input" id="fridayHolidays" placeholder="Holidays" required>
+                        <input type="number" class="form-control square-input" id="fridayHolidays" placeholder="Holidays" max="30" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="saturdayHolidays">Saturday</label>
-                        <input type="number" class="form-control square-input" id="saturdayHolidays" placeholder="Holidays" required>
+                        <input type="number" class="form-control square-input" id="saturdayHolidays" placeholder="Holidays" max="30" required>
                     </div>
                 </div>
             </div>
+            <br>
+            <br>
             <div class="form-group">
                 <label for="flag">Attendance Goal:</label>
                 <select id="flag" name="flag" class="form-control">
