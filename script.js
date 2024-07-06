@@ -167,19 +167,18 @@ const calculateAttendance = () => {
     classDays.forEach(day => {
         let classValue = parseInt(document.getElementById(`${day}Classes`).value);
         let holidaysPerDay = parseInt(document.getElementById(`${day}Holidays`).value);
+        if (isNaN(classValue)){
+            alert(`No. of Classes Conducted on ${day} is Empty`);
+            return;
+        }
+        if (isNaN(holidaysPerDay)){
+            alert(`No. of public holidays Occurring  on ${day} is Empty`);
+            return;
+        }
+
         classesPerDay.push(classValue);
         holidaysPerWeek.push(holidaysPerDay);
     });
-
-    if (classesPerDay.length<6){
-        alert(`Classes conducted per Day cannot be Empty`);
-        return;
-    }
-
-    if (holidaysPerWeek.length<6){
-        alert(`Public Holidays occurring cannot be empty`);
-        return;
-    }
 
     for (let i=0;i<6;i++){
         if (classesPerDay[i]<0){
