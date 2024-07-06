@@ -165,8 +165,8 @@ const calculateAttendance = () => {
         return;
     }
     classDays.forEach(day => {
-        let classValue = parseInt(document.getElementById(`${day}Classes`).value) || 0;
-        let holidaysPerDay = parseInt(document.getElementById(`${day}Holidays`).value) || 0;
+        let classValue = parseInt(document.getElementById(`${day}Classes`).value);
+        let holidaysPerDay = parseInt(document.getElementById(`${day}Holidays`).value);
         classesPerDay.push(classValue);
         holidaysPerWeek.push(holidaysPerDay);
     });
