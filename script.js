@@ -58,6 +58,7 @@ $(document).ready(function() {
 // Function to create input boxes dynamically based on number of subjects
 const createInputBoxes = () => {
     let numSubjects = parseInt(document.getElementById('numSubjects').value);
+    console.log('numSubjects:', numSubjects);
 
     if (isNaN(numSubjects) || numSubjects <= 0 || numSubjects > 15) {
         alert('Please enter a number of subjects between 1 and 15.');
@@ -128,6 +129,8 @@ const countWeekdays = (start, end) => {
         currentDate.setDate(currentDate.getDate() + 1);
     }
 
+    console.log('Week Count:', weekCount);
+
     return [
         weekCount['Monday'],
         weekCount['Tuesday'],
@@ -144,22 +147,57 @@ const calculateAttendance = () => {
     // Get dates and calculate weekdays excluding holidays
     let startDate = new Date(document.getElementById('startDate').value);
     let endDate = new Date(document.getElementById('endDate').value);
+    console.log('Start Date:', startDate, 'End Date:', endDate);
+
+    if (isNaN(startDate) || isNaN(endDate)) {
+        alert('Please enter both start date and end date.');
+        return;
+    }
+
     let classDays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
     let classesPerDay = [];
     let holidaysPerWeek = [];
     let goal = document.getElementById('flag').value;
+    console.log('Goal:', goal);
 
-    if (startDate >= endDate) {
+    if ( startDate >= endDate) {
         alert('Start date must be before end date.');
         return;
     }
-    
     classDays.forEach(day => {
         let classValue = parseInt(document.getElementById(`${day}Classes`).value) || 0;
         let holidaysPerDay = parseInt(document.getElementById(`${day}Holidays`).value) || 0;
         classesPerDay.push(classValue);
         holidaysPerWeek.push(holidaysPerDay);
     });
+
+    if (classesPerDay.length<6){
+        alert(`Classes conducted per Day cannot be Empty`);
+        return;
+    }
+
+    if (holidaysPerWeek.length<6){
+        alert(`Public Holidays occurring cannot be empty`);
+        return;
+    }
+
+    for (let i=0;i<6;i++){
+        if (classesPerDay[i]<0){
+            alert("Classes conducted per Day cannot be Negative Number");
+            return;
+        }
+    }
+
+    for (i=0;i<6;i++){
+        if (holidaysPerWeek[i]<0){
+            alert("Public Holidays occurring cannot be Negative Number");
+            return;
+        }
+    }
+
+
+    console.log('Classes Per Day:', classesPerDay);
+    console.log('Holidays Per Week:', holidaysPerWeek);
 
     let numSubjects = parseInt(document.getElementById('numSubjects').value);
     let totalAttended = 0;
@@ -171,6 +209,8 @@ const calculateAttendance = () => {
         totalAttended += attended;
         totalConducted += conducted;
     }
+    console.log('Total Attended:', totalAttended);
+    console.log('Total Conducted:', totalConducted);
 
 
     let totalClasses=totalConducted;
@@ -187,7 +227,7 @@ const calculateAttendance = () => {
     for (let i = 0; i < 6; i++) {
         additionalClasses -= holidaysPerWeek[i] * classesPerDay[i];
     }
-    console.log('additionalClasses :', additionalClasses);
+    console.log('Additional Classes:', additionalClasses);
 
     let percent= (goal==1) ? 0.25 :0.35;
 
@@ -197,7 +237,7 @@ const calculateAttendance = () => {
     let attendancePercentage=((totalClasses -( totalConducted - totalAttended)) / totalClasses) * 100;
     let userHolidays = Math.floor(percent*totalClasses - ( totalConducted - totalAttended)) ;
 
-    let resultText = `Total No of Classes you can skip for the Semester: ${(totalClasses/4)}`;
+    let resultText = `Total No of Classes you can skip for the Semester: ${parseInt(totalClasses/4) }`;
 
     resultText += `<br>Current Attendance Percentage: ${(totalAttended*100/totalConducted).toFixed(2)}%`;
 
