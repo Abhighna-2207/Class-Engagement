@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance Calculator</title>
-    <!-- Link to jQuery UI CSS -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- jQuery UI CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-    <!-- Link to jQuery and jQuery UI JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- jQuery UI JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    
     <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
     <div class="container">
-        <h1>Attendance Calculator</h1>
+        <h1 class="text-center mb-4">Attendance Calculator</h1>
         <form id="attendanceForm">
             <div class="form-group">
                 <label for="startDate">Tomorrow's Date:</label>
@@ -32,81 +38,70 @@
             </div>
             <div class="form-group">
                 <label for="numSubjects">Enter number of subjects (up to 15):</label>
-                <input type="number" id="numSubjects" name="numSubjects" max="15" min="1" required>
-                <button type="button"  id="createInputBoxes">Enter Attendance</button>
-                <br>
-                <br>
+                <input type="number" id="numSubjects" name="numSubjects" class="form-control" max="15" min="1" required>
+                <button type="button" class="btn btn-primary mt-2" id="createInputBoxes">Enter Attendance</button>
             </div>
-            <div class="box-container" id="boxContainer">
+            <div class="attendance-boxes" id="boxContainer">
                 <!-- Input boxes dynamically created here -->
             </div>
-            <br>
-            <br>
             <div class="form-group">
                 <label>No. of Classes conducted per Day :</label>
-                <br>
-                <br>
                 <div class="form-row days-input-container">
                     <div class="form-group col day-input">
                         <label for="mondayClasses">Monday :</label>
-                        <input type="number" class="form-control square-input" id="mondayClasses" placeholder="Classes" min="0" max="10" required>
+                        <input type="number" class="form-control square-input day-class" id="mondayClasses"  min="0" max="10" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="tuesdayClasses">Tuesday</label>
-                        <input type="number" class="form-control square-input" id="tuesdayClasses" placeholder="Classes" min="0" max="10" required>
+                        <input type="number" class="form-control square-input day-class" id="tuesdayClasses"  min="0" max="10" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="wednesdayClasses">Wednesday</label>
-                        <input type="number" class="form-control square-input" id="wednesdayClasses" placeholder="Classes" min="0" max="10" required>
+                        <input type="number" class="form-control square-input day-class" id="wednesdayClasses" min="0" max="10" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="thursdayClasses">Thursday</label>
-                        <input type="number" class="form-control square-input" id="thursdayClasses" placeholder="Classes" min="0" max="10" required>
+                        <input type="number" class="form-control square-input day-class" id="thursdayClasses" min="0" max="10" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="fridayClasses">Friday</label>
-                        <input type="number" class="form-control square-input" id="fridayClasses" placeholder="Classes" min="0" max="10" required>
+                        <input type="number" class="form-control square-input day-class" id="fridayClasses"  min="0" max="10" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="saturdayClasses">Saturday</label>
-                        <input type="number" class="form-control square-input" id="saturdayClasses" placeholder="Classes" min="0" max="10" required>
+                        <input type="number" class="form-control square-input day-class" id="saturdayClasses" min="0" max="10" required>
                     </div>
                 </div>
             </div>
-            <br>
-            <br>
             <div class="form-group">
                 <label>No. of public holidays occurring between tomorrow and the end of the semester on :</label>
-                <br>
                 <div class="form-row days-input-container">
                     <div class="form-group col day-input">
                         <label for="mondayHolidays">Monday</label>
-                        <input type="number" class="form-control square-input" id="mondayHolidays" placeholder="Holidays" max="30" required>
+                        <input type="number" class="form-control square-input day-class" id="mondayHolidays" max="30" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="tuesdayHolidays">Tuesday</label>
-                        <input type="number" class="form-control square-input" id="tuesdayHolidays" placeholder="Holidays" max="30" required>
+                        <input type="number" class="form-control square-input day-class" id="tuesdayHolidays"  max="30" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="wednesdayHolidays">Wednesday</label>
-                        <input type="number" class="form-control square-input" id="wednesdayHolidays" placeholder="Holidays" max="30" required>
+                        <input type="number" class="form-control square-input day-class" id="wednesdayHolidays" max="30" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="thursdayHolidays">Thursday</label>
-                        <input type="number" class="form-control square-input" id="thursdayHolidays" placeholder="Holidays" max="30" required>
+                        <input type="number" class="form-control square-input day-class" id="thursdayHolidays" max="30" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="fridayHolidays">Friday</label>
-                        <input type="number" class="form-control square-input" id="fridayHolidays" placeholder="Holidays" max="30" required>
+                        <input type="number" class="form-control square-input day-class" id="fridayHolidays"  max="30" required>
                     </div>
                     <div class="form-group col day-input">
                         <label for="saturdayHolidays">Saturday</label>
-                        <input type="number" class="form-control square-input" id="saturdayHolidays" placeholder="Holidays" max="30" required>
+                        <input type="number" class="form-control square-input day-class" id="saturdayHolidays"  max="30" required>
                     </div>
                 </div>
             </div>
-            <br>
-            <br>
             <div class="form-group">
                 <label for="flag">Attendance Goal:</label>
                 <select id="flag" name="flag" class="form-control">
@@ -114,24 +109,38 @@
                     <option value="2">Condonation</option>
                 </select>
             </div>
-            <br>
-            <button type="button" onclick="calculateAttendance()">Calculate</button>
+            <button type="button" class="btn btn-primary" onclick="calculateAttendance()">Calculate</button>
         </form>
-        <div id="resultContainer" class="result" style="display:none;">
-            <h2>Results:</h2>
-            <p id="attendancePercentage"></p>
-            <p id="skipClasses"></p>
-            <p id="needToAttend"></p>
-        </div>
     </div>
-    
-    <div class="print-statement">
-        <p >The Formula for Calculating:</p>
+
+    <div id="resultContainer" class="result" style="display: none;">
+        <h2 class="text-center">Results:</h2>
+        <div class="item">
+            <p class="number">Current Attendance Percentage :</p>
+            <div class="square" id="attendancePercentage">34</div>
+            <p>%</p>
+        </div>
+        <div class="item">
+            <p class="number">You can Skip:</p>
+            <div class="square" id="skipClasses">54</div>
+            <p>%</p>
+        </div>
+        <div class="item">
+            <p class="number">You need to Attend:</p>
+            <div class="square" id="needToAttend">55</div>
+            <p>%</p>
+        </div>
+        <div class="item">
+            <p class="number">Attendance % by the end of Semester if you attend the Suggested Number of Classes:</p>
+            <div class="square">45</div>
+            <p>%</p>
+        </div>
+    <div class="print-statement text-center">
+        <p>The Formula for Calculating:</p>
         <p>Attendance %= (Total Number of Classes Attended / Total Number of Classes Conducted) * 100</p>
         <br>
         <p>Note: THIS PROGRAM CALCULATES THE NUMBER OF CLASSES YOU CAN SKIP AND THE ATTENDANCE PERCENTAGE FROM TOMORROW, SO MAKE SURE THE DATA YOU ENTER IS CONSIDERED FROM THE END OF TODAY</p>
     </div>
-    
 
     <script src="script.js"></script>
 </body>
