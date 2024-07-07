@@ -259,35 +259,51 @@ const calculateAttendance = () => {
 
 
     totalClasses += additionalClasses;
+    let userHolidays = parseInt(percent*totalClasses - ( totalConducted - totalAttended)) ;
+    let resultText = "";
 
-    let attendancePercentage=((totalClasses -( totalConducted - totalAttended)) / totalClasses) * 100;
-    let userHolidays = Math.floor(percent*totalClasses - ( totalConducted - totalAttended)) ;
+    let skipClasses = 0;
+    let needToAttend = 0;
+    let attendancePercentage = 0.0;
 
-    let resultText = `Total No of Classes you can skip for the Semester: ${parseInt(totalClasses/4) }`;
-
-    resultText += `<br>Current Attendance Percentage: ${(totalAttended*100/totalConducted).toFixed(2)}%`;
+    attendancePercentage +=(totalAttended*100/totalConducted);
 
     if (userHolidays > 0) {
+        needToAttend += Math.max(0, additionalClasses - userHolidays);
         if (userHolidays > additionalClasses) {
-            resultText+= `<br>You can skip <b> ${(additionalClasses)} classes`;
-            resultText+= `<br>Your Attendance Percentage by the end of the semester:  ${((totalAttended * 100 / totalClasses).toFixed(2))}`;
+            skipClasses+= additionalClasses;
         } else {
-            resultText+= `<br>You can skip ${(userHolidays)} classes`;
-            resultText+= `<br>Attendance Percentage by the end of the semester: ${(((totalAttended + additionalClasses - userHolidays) * 100 / totalClasses).toFixed(2))}`;
+            skipClasses+= userHolidays;
         }
-        resultText += `<br>You need to attend  ${(Math.max(0, additionalClasses - userHolidays))} classes`;
-    } else if (userHolidays < 0) {
-        resultText += `<br>Attendance Percentage by the end of the semester: ${(attendancePercentage.toFixed(2))}`;
+    }else if (userHolidays < 0) {
+        needToAttend += additionalClasses;
         resultText += `<br>Less than necessary`;
-        resultText += `<br>You need to attend all <b> ${(additionalClasses)} classes`;
-    } else {
-        resultText += `<br>Attendance Percentage by the end of the semester: ${(attendancePercentage.toFixed(2))}`;
+    }else {
+        needToAttend += additionalClasses;
         resultText += `<br>NO more Holidays`;
-        resultText += `<br>You need to attend all <b> ${(additionalClasses)} classes`;
     }
+
+    let semEndPercent=Math.max((totalAttended * 100 / totalClasses),((totalAttended+needToAttend)*100)/totalClasses).toFixed(2);
     console.log(resultText);
     // Display result// Example of updating inner HTML correctly
-    document.getElementById('resultContainer').style.display = 'block';
-    document.getElementById('attendancePercentage').innerHTML = "";
 
+    // Remove any leading zeros from the attendance percentage
+    attendancePercentage = parseFloat(attendancePercentage);
+    attendancePercentage=attendancePercentage.toFixed(2);
+    semEndPercent= semEndPercent;
+
+    // Display resultconsole.log("totalClasses: ", totalClasses);
+    console.log("totalConducted: ", totalConducted);
+    console.log("totalAttended: ", totalAttended);
+    console.log("additionalClasses: ", additionalClasses);
+    console.log("attendancePercentage: ", attendancePercentage);
+    console.log("userHolidays",userHolidays);
+    console.log("semEndPercent",semEndPercent);
+    console.log("totalClasses",totalClasses,((totalAttended+needToAttend)/totalClasses));
+
+    document.getElementById('resultContainer').style.display = 'block';
+    document.getElementById('attendancePercentage').innerHTML = attendancePercentage;
+    document.getElementById('skipClasses').innerHTML = skipClasses;
+    document.getElementById('needToAttend').innerHTML = needToAttend;
+    document.getElementById('semEndPercent').innerHTML = semEndPercent;
 };
