@@ -6,7 +6,6 @@ $(document).ready(function() {
         todayHighlight: true,
     });
 
-
     // Event listener for Enter key press in the numSubjects input field
     $('#numSubjects').keypress(function(event) {
         if (event.which === 13) { // Check if Enter key is pressed
@@ -55,10 +54,10 @@ $(document).ready(function() {
 
 
 });
+
 // Function to create input boxes dynamically based on number of subjects
 const createInputBoxes = () => {
     let numSubjects = parseInt(document.getElementById('numSubjects').value);
-    console.log('numSubjects:', numSubjects);
 
     if (isNaN(numSubjects) || numSubjects <= 0 || numSubjects > 15) {
         alert('Please enter a number of subjects between 1 and 15.');
@@ -73,25 +72,34 @@ const createInputBoxes = () => {
         let rowDiv = document.createElement('div');
         rowDiv.className = 'form-row box';
 
+        // Create label for attended input
+        let attendedLabel = document.createElement('label');
+        attendedLabel.innerText = `Subject ${i + 1}:`;
+        attendedLabel.className = 'col-form-label col-md-2';
+        rowDiv.appendChild(attendedLabel);
+
         // Create attended input
         let attendedInput = document.createElement('input');
         attendedInput.type = 'number';
-        attendedInput.className = 'form-control square-input';
+        attendedInput.className = 'form-control col-md-4';
         attendedInput.placeholder = 'Attended';
         attendedInput.name = `attended_${i}`;
+        attendedInput.style.width = '150px'; // Set width inline
         rowDiv.appendChild(attendedInput);
 
         // Create slash between attended and conducted
         let slash = document.createElement('span');
         slash.innerText = ' / ';
+        slash.className = 'col-form-label';
         rowDiv.appendChild(slash);
 
         // Create conducted input
         let conductedInput = document.createElement('input');
         conductedInput.type = 'number';
-        conductedInput.className = 'form-control square-input';
+        conductedInput.className = 'form-control col-md-4';
         conductedInput.placeholder = 'Conducted';
         conductedInput.name = `conducted_${i}`;
+        conductedInput.style.width = '150px'; // Set width inline
         rowDiv.appendChild(conductedInput);
 
         // Append the row div to the container
@@ -99,6 +107,8 @@ const createInputBoxes = () => {
     }
 };
 
+// Event listener for button click to generate input boxes
+document.getElementById('createInputBoxes').addEventListener('click', createInputBoxes);
 
 // Function to count weekdays between two dates, excluding holidays
 
@@ -163,23 +173,40 @@ const calculateAttendance = () => {
     if ( startDate >= endDate) {
         alert('Start date must be before end date.');
         return;
-    }
+    }// Assuming `classDays`, `classesPerDay`, and `holidaysPerWeek` are defined elsewhere
+
+    let isClassDataComplete = true;
+    let isHolidayDataComplete = true;
+    
     classDays.forEach(day => {
         let classValue = parseInt(document.getElementById(`${day}Classes`).value);
         let holidaysPerDay = parseInt(document.getElementById(`${day}Holidays`).value);
-        if (isNaN(classValue)){
-            alert(`No. of Classes Conducted on ${day} is Empty`);
-            return;
+    
+        if (isNaN(classValue)) {
+            isClassDataComplete = false;
+        } else {
+            classesPerDay.push(classValue);
         }
-        if (isNaN(holidaysPerDay)){
-            alert(`No. of public holidays Occurring  on ${day} is Empty`);
-            return;
+    
+        if (isNaN(holidaysPerDay)) {
+            isHolidayDataComplete = false;
+        } else {
+            holidaysPerWeek.push(holidaysPerDay);
         }
-
-        classesPerDay.push(classValue);
-        holidaysPerWeek.push(holidaysPerDay);
     });
+    
+    if (!isClassDataComplete) {
+        alert(`Classes conducted per day is incomplete. Please enter values for all days.`);
+        return;
+    }
+    
+    if (!isHolidayDataComplete) {
+        alert(`Number of public holidays is incomplete. Please enter values for all days.`);
+        return;
+    }
 
+    
+    // Further processing can be done here
     for (let i=0;i<6;i++){
         if (classesPerDay[i]<0){
             alert("Classes conducted per Day cannot be Negative Number");
@@ -261,6 +288,6 @@ const calculateAttendance = () => {
     console.log(resultText);
     // Display result// Example of updating inner HTML correctly
     document.getElementById('resultContainer').style.display = 'block';
-    document.getElementById('attendancePercentage').innerHTML = resultText;
+    document.getElementById('attendancePercentage').innerHTML = "";
 
 };
