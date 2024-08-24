@@ -1,8 +1,8 @@
-# Attendance Calculator
+# Class Engagement
 
 This is a simple web-based attendance calculator that helps you determine your attendance percentage based on the classes attended and conducted. It also provides information on the number of classes you can afford to skip to maintain a satisfactory attendance rate.
 
-**Link:** https://abhighna-2207.github.io/Course_Attendance_Calculator/ 
+**Link:** https://abhighna-2207.github.io/Class-Engagement/
 
 ## Features
 
